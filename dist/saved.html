@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Plan fantasy football transfers, compare fixtures, and build your shortlist. An interactive student project with illustrative data."
+    />
+    <title>Saved workspace | Fantasy Football Planner</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/theme.js"></script>
+    <script defer src="vendor/jquery-3.6.1.min.js"></script>
+    <script defer src="js/data.js"></script>
+    <script defer src="js/core.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
+  <body data-page="saved">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark" aria-hidden="true">F<span>↗</span></span
+        ><span>Fantasy Football<small>PLANNER</small></span></a
+      ><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item"
+          ><span aria-hidden="true">◫</span>Dashboard</a
+        ><a href="planner.html" class="nav-item"
+          ><span aria-hidden="true">⇄</span>Transfer planner</a
+        ><a href="fdr.html" class="nav-item"><span aria-hidden="true">▦</span>Fixture difficulty</a
+        ><a href="articles.html" class="nav-item"
+          ><span aria-hidden="true">▤</span>Scout articles</a
+        >
+      <a href="saved.html" class="nav-item active" aria-current="page">☆ Saved workspace <span id="saved-count">0</span></a>
+        <button class="nav-item theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="small-label">YOUR NEXT MOVE</span>
+        <p>A little planning.<br />A better gameweek.</p>
+        <a href="planner.html">Build a transfer plan <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Independent student project</div>
+    </aside>
+    <div class="page-shell">
+      <header class="topbar">
+        <span class="breadcrumb">Workspace <span>/</span> <strong>Saved workspace</strong></span
+        ><span class="demo-badge"><span class="status-dot"></span> Demo season · GW8</span>
+      </header>
+      <main id="main" tabindex="-1">
+<div class="page-heading"><div><p class="eyebrow">YOUR MATCHDAY NOTEBOOK</p><h1>Your next moves, together.</h1><p class="intro">Players, reading and transfer plans saved on this browser.</p></div></div>
+<div class="success-message" id="saved-status" role="status" hidden></div>
+<section class="saved-section" aria-labelledby="saved-players-heading"><div class="section-heading"><h2 id="saved-players-heading">Player shortlist</h2><button class="button secondary" data-clear="shortlist">Clear players</button></div><p id="saved-value" class="data-note"></p><div id="workspace-players" class="saved-grid row"></div></section>
+<section class="saved-section" aria-labelledby="saved-articles-heading"><div class="section-heading"><h2 id="saved-articles-heading">Reading list</h2><button class="button secondary" data-clear="bookmarks">Clear articles</button></div><div id="workspace-articles" class="saved-grid row"></div></section>
+<section class="saved-section" aria-labelledby="saved-plans-heading"><div class="section-heading"><h2 id="saved-plans-heading">Transfer plans</h2><button class="button secondary" data-clear="plans">Clear plans</button></div><div id="workspace-plans" class="saved-grid row"></div></section>
+<p class="data-note">Demo data. Storage is local to this browser and origin. Clearing browser data removes these items. Export plans from the transfer planner to keep a copy.</p>
+</main>
+      <footer>
+        <div>
+          <strong>Fantasy Football Planner</strong><br />Yerassyl Almakhan &amp; Ualikhan Beibarys ·
+          Final 2026
+        </div>
+        <div>
+          <button
+            class="text-button"
+            data-accordion="credits"
+            aria-expanded="false"
+            aria-controls="credits"
+          >
+            Credits &amp; data notes +</button
+          ><button class="text-button back-top">Back to top ↑</button>
+        </div>
+        <div id="credits" class="credit-panel" hidden>
+          Original midterm concept and pages: Yerassyl Almakhan &amp; Ualikhan Beibarys.
+          Development, writing and original CSS/SVG graphics assisted by OpenAI ChatGPT/Codex.
+          Adding the stadium background photo to the CSS was assisted by Claude (Anthropic).
+          Background photo “Twilight Stadium Ball on Emerald Turf”: supplied by the project author
+          (original source/license not included in the supplied archive; author must verify before submission).
+          <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3.3</a> for
+          form components;
+          <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery 3.6.1</a> for
+          animations (both MIT licensed). All player prices, points, club associations, fixtures and
+          articles are illustrative learning content, not current football news or official FPL
+          data. No affiliation with the Premier League. Preferences and plans stay in this browser;
+          no email is sent.
+        </div>
+      </footer>
+    </div>
+    <div class="toast-message" id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><div class="noscript">
+        Enable JavaScript to use the planner, filters and saved articles.
+      </div></noscript
+    >
+  </body>
+</html>

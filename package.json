@@ -1,0 +1,9 @@
+{
+  "name": "fantasy-football-planner",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Final project: Fantasy Football Planner",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs"
+  }
+}

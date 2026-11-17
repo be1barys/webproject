@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Plan fantasy football transfers, compare fixtures, and build your shortlist. An interactive student project with illustrative data."
+    />
+    <title>Fixture difficulty | Fantasy Football Planner</title>
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/theme.js"></script>
+    <script defer src="vendor/jquery-3.6.1.min.js"></script>
+    <script defer src="js/data.js"></script>
+    <script defer src="js/core.js"></script>
+    <script defer src="js/app.js"></script>
+  </head>
+  <body data-page="fdr">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <aside class="sidebar">
+      <a class="brand" href="index.html"
+        ><span class="brand-mark" aria-hidden="true">F<span>↗</span></span
+        ><span>Fantasy Football<small>PLANNER</small></span></a
+      ><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">
+        Menu <span aria-hidden="true">☰</span>
+      </button>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="index.html" class="nav-item"><span aria-hidden="true">◫</span>Dashboard</a
+        ><a href="planner.html" class="nav-item"
+          ><span aria-hidden="true">⇄</span>Transfer planner</a
+        ><a href="fdr.html" class="nav-item active" aria-current="page"
+          ><span aria-hidden="true">▦</span>Fixture difficulty</a
+        ><a href="articles.html" class="nav-item"
+          ><span aria-hidden="true">▤</span>Scout articles</a
+        >
+      <a href="saved.html" class="nav-item">☆ Saved workspace <span id="saved-count">0</span></a>
+        <button class="nav-item theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="small-label">YOUR NEXT MOVE</span>
+        <p>A little planning.<br />A better gameweek.</p>
+        <a href="planner.html">Build a transfer plan <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Independent student project</div>
+    </aside>
+    <div class="page-shell">
+      <header class="topbar">
+        <span class="breadcrumb">Workspace <span>/</span> <strong>Fixture difficulty</strong></span
+        ><span class="demo-badge"><span class="status-dot"></span> Demo season · GW8</span>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">THE FIXTURE RADAR</p>
+            <h1>Find the green runs.</h1>
+            <p class="intro">
+              Compare four gameweeks of illustrative fixtures. Lower ratings mean an easier run.
+            </p>
+          </div>
+        </div>
+        <div class="fixture-controls panel">
+          <div class="filter-bar">
+            <div class="search-field">
+              <label for="team-search" class="form-label">Find a club</label
+              ><input
+                type="search"
+                id="team-search"
+                class="form-control"
+                placeholder="Search club…"
+              />
+            </div>
+            <label class="filter-label" for="fixture-sort"
+              >Order clubs<select id="fixture-sort" class="form-select">
+                <option value="easy">Easiest average first</option>
+                <option value="hard">Hardest average first</option>
+                <option value="name">Club name A–Z</option>
+              </select></label
+            ><label class="filter-label" for="venue-filter"
+              >Venue<select id="venue-filter" class="form-select">
+                <option value="">Home &amp; away</option>
+                <option value="H">Home only</option>
+                <option value="A">Away only</option>
+              </select></label
+            ><button class="button secondary" id="reset-fixtures">Reset filters</button>
+          </div>
+          <div class="legend">
+            <span>Difficulty</span><span class="difficulty d1">1 · Very easy</span
+            ><span class="difficulty d2">2 · Easy</span><span class="difficulty d3">3 · Medium</span
+            ><span class="difficulty d4">4 · Hard</span
+            ><span class="difficulty d5">5 · Very hard</span>
+          </div>
+        </div>
+        <section class="section">
+          <div class="section-heading">
+            <h2>Four-week fixture ticker</h2>
+            <span class="subtle" id="fixture-count" role="status"></span>
+          </div>
+          <div class="table-wrap">
+            <table class="fixture-table">
+              <caption class="visually-hidden">
+                Illustrative club fixtures for gameweeks 8 to 11. H means home, A means away. Each
+                cell includes the numerical difficulty.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Club</th>
+                  <th scope="col">GW8</th>
+                  <th scope="col">GW9</th>
+                  <th scope="col">GW10</th>
+                  <th scope="col">GW11</th>
+                  <th scope="col">Avg.</th>
+                </tr>
+              </thead>
+              <tbody id="fixture-rows"></tbody>
+            </table>
+          </div>
+          <div id="fixture-empty" class="empty-state" hidden>
+            No clubs match your search. Try a different name.
+          </div>
+          <p class="data-note">
+            H = home · A = away. Averages use the displayed venue filter. This is a fictional
+            schedule for demonstrating the tool; it is not the current Premier League calendar.
+          </p>
+        </section>
+        <section class="two-grid section" id="fixture-insights"></section>
+        <section class="panel">
+          <h2>How to read the radar</h2>
+          <p>
+            Start with the average, then look at the individual fixtures. A good overall run can
+            still contain a difficult match. The demo rating combines opponent strength and venue;
+            it is a planning cue, not a points prediction.
+          </p>
+          <button
+            class="text-button"
+            data-accordion="fdr-method"
+            aria-expanded="false"
+            aria-controls="fdr-method"
+          >
+            See the demo rating method +
+          </button>
+          <div id="fdr-method" hidden>
+            <p>
+              Each club has a sample strength from 2 to 5. Playing at home reduces the opponent’s
+              strength rating by one; away fixtures keep it unchanged. Ratings are clamped between 1
+              and 5. The average is calculated only from fixtures visible under your venue filter.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <div>
+          <strong>Fantasy Football Planner</strong><br />Yerassyl Almakhan &amp; Ualikhan Beibarys ·
+          Final 2026
+        </div>
+        <div>
+          <button
+            class="text-button"
+            data-accordion="credits"
+            aria-expanded="false"
+            aria-controls="credits"
+          >
+            Credits &amp; data notes +</button
+          ><button class="text-button back-top">Back to top ↑</button>
+        </div>
+        <div id="credits" class="credit-panel" hidden>
+          Original midterm concept and pages: Yerassyl Almakhan &amp; Ualikhan Beibarys.
+          Development, writing and original CSS/SVG graphics assisted by OpenAI ChatGPT/Codex.
+          Adding the stadium background photo to the CSS was assisted by Claude (Anthropic).
+          Background photo “Twilight Stadium Ball on Emerald Turf”: supplied by the project author
+          (original source/license not included in the supplied archive; author must verify before submission).
+          <a href="https://getbootstrap.com/" target="_blank" rel="noopener">Bootstrap 5.3.3</a> for
+          form components;
+          <a href="https://jquery.com/" target="_blank" rel="noopener">jQuery 3.6.1</a> for
+          animations (both MIT licensed). All player prices, points, club associations, fixtures and
+          articles are illustrative learning content, not current football news or official FPL
+          data. No affiliation with the Premier League. Preferences and plans stay in this browser;
+          no email is sent.
+        </div>
+      </footer>
+    </div>
+    <div class="toast-message" id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><div class="noscript">
+        Enable JavaScript to use the planner, filters and saved articles.
+      </div></noscript
+    >
+  </body>
+</html>
